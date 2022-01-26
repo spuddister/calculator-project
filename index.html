@@ -5,37 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="icon" href="img/calculator-solid.svg" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/4420b7d6ab.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header><a class="link" href="https://github.com/spuddister" target="_blank">spuddister <i class='fa fa-github'></i></a></header>
     <div class="main-container">
         <div class="calculator">
             <div class="display">
-                <p>display area</p>
+                <div class="output">0000000</div>
+                <div class="input">000,000,000</div>
             </div>
             <div class="button-panel">
                 <button class="func-button">AC</button>
-                <button class="func-button">+/-</button>
-                <button class="func-button">%</button>
-                <button class="operator-button, divide">/</button>
-                <button class="num-button">7</button>
-                <button class="num-button">8</button>
-                <button class="num-button">9</button>
-                <button class="operator-button, multiply">x</button>
-                <button class="num-button">4</button>
-                <button class="num-button">5</button>
-                <button class="num-button">6</button>
-                <button class="operator-button, subtract">-</button>
-                <button class="num-button">1</button>
-                <button class="num-button">2</button>
-                <button class="num-button">3</button>
-                <button class="operator-button, add">+</button>
-                <button class="num-button, zero">0</button>
-                <button class="num-button, decimal-button">.</button>
-                <button class="operator-button, equals">=</button>
+                <button class="func-button"><i class="fas fa-backspace"></i></i></button>
+                <button class="func-button plus-minus">&#177</button>
+                <button class="op-button divide"><i class="fas fa-divide"></i></button>
+                <button class="num-button" id="seven">7</button>
+                <button class="num-button" id="eight">8</button>
+                <button class="num-button" id="nine">9</button>
+                <button class="op-button multiply"><i class="fas fa-times"></i></button>
+                <button class="num-button" id="four">4</button>
+                <button class="num-button" id="five">5</button>
+                <button class="num-button" id="six">6</button>
+                <button class="op-button subtract"><i class="fas fa-minus"></i></button>
+                <button class="num-button" id="one">1</button>
+                <button class="num-button" id="two">2</button>
+                <button class="num-button" id="three">3</button>
+                <button class="op-button add"><i class="fas fa-plus"></i></button>
+                <button class="num-button" id="zero">0</button>
+                <button class="num-button dec-button">.</button>
+                <button class="op-button equals"><i class="fas fa-equals"></i></button>
             </div>
         </div>
     </div>
