@@ -47,20 +47,20 @@ body {
     position: relative;
 }
 
-.input, .output {
+#input, #output {
     max-width: 330px;
     max-height: 60px;
     font-family: 'ZCOOL QingKe HuangYou', sans-serif;
 }
 
-.input {
+#input {
     position: absolute;
     right: 10px;
     bottom: 5px;
     font-size: 50px;
 }
 
-.output {
+#output {
     position: absolute;
     right: 10px;
     bottom: 65px;
