@@ -1,84 +1,114 @@
-let prevVal = 0;
-let value = 0;
+let operand1 = null;
+let operand2 = 0;
 let operator;
+let decimalBoolean = false;
+let operationUnderway = false;
 
-//NEXT: when you're back code in the prevValue from the operator buttons!!
+//DISPLAYS
+const topDisplay = document.getElementById('output');
+const botDisplay = document.getElementById('input');
+
 
 //OPERATOR BUTTONS
-const equalsBtn = document.getElementById('equals').addEventListener('click', function(){
-    console.log('equals');
-    value = operate(prevVal, value, operator);
+const equalsBtn = document.getElementById('equals').addEventListener('click', function() {
+    operand2 = operate(operand1, operand2, operator);
+    displayRefresh();
+    topDisplay.textContent = '';
+    operator = '';
+    operand1 = null;
 });
+//ADD
 const addBtn = document.getElementById('add').addEventListener('click', function(){
-    console.log('add');
-    operator = 'add';
+    operatorSelected('add');
 })
+
+//SUBTRACT
 const subtractBtn = document.getElementById('subtract').addEventListener('click', function(){
-    console.log('subtract');
-    operator = 'subtract';
+    operatorSelected('subtract');
 })
+
+//MULTIPLY
 const multiplyBtn = document.getElementById('multiply').addEventListener('click', function(){
-    console.log('multiply');
-    operator = 'multiply';
+    operatorSelected('multiply');
 })
+
+//DIVIDE
 const divideBtn = document.getElementById('divide').addEventListener('click', function(){
-    console.log('divide');
-    operator = 'divide';
+    operatorSelected('divide');
 })
+
+//BACKSPACE
 const backBtn = document.getElementById('backspace').addEventListener('click', function(){
-    console.log('backspace');
-    botDisplayRemove();
+    displayRemoveDigit();
 })
 
 //NUMBER BUTTONS
 const zero = document.getElementById('zero').addEventListener('click', function(){
-    botDisplayAdd(0);
+    displayAddDigit(0);
 })
 const one = document.getElementById('one').addEventListener('click', function(){
-    botDisplayAdd(1);
+    displayAddDigit(1);
 })
 const two = document.getElementById('two').addEventListener('click', function(){
-    botDisplayAdd(2);
+    displayAddDigit(2);
 })
 const three = document.getElementById('three').addEventListener('click', function(){
-    botDisplayAdd(3);
+    displayAddDigit(3);
 })
 const four = document.getElementById('four').addEventListener('click', function(){
-    botDisplayAdd(4);
+    displayAddDigit(4);
 })
 const five = document.getElementById('five').addEventListener('click', function(){
-    botDisplayAdd(5);
+    displayAddDigit(5);
 })
 const six = document.getElementById('six').addEventListener('click', function(){
-    botDisplayAdd(6);
+    displayAddDigit(6);
 })
 const seven = document.getElementById('seven').addEventListener('click', function(){
-    botDisplayAdd(7);
+    displayAddDigit(7);
 })
 const eight = document.getElementById('eight').addEventListener('click', function(){
-    botDisplayAdd(8);
+    displayAddDigit(8);
 })
 const nine = document.getElementById('nine').addEventListener('click', function(){
-    botDisplayAdd(9);
+    displayAddDigit(9);
+})
+const decimal = document.getElementById('dec-button').addEventListener('click', function(){
+    console.log('decimal');
 })
 
-//DISPLAYS
-const botDisplay = document.getElementById('input');
-
 //FUNCTIONS
-function botDisplayAdd(newDigit){
-    value = value*10 + newDigit;
-    botDisplay.textContent = value;
-}
-function botDisplayRemove(){
-    if (botDisplay.textContent.length > 1 && value > 1) {
-        value = Math.floor(value/10);
-        botDisplay.textContent = value;
-        console.log('here')
+function setTopDisplay(operand, operator){
+    let op;
+    if (operator == 'add') {
+        op = '+';
+    } else if (operator == 'subtract') {
+        op = '-';
+    } else if (operator == 'multiply') {
+        op = '×';
+    } else if (operator == 'divide') {
+        op = '÷';
     } else {
-        value = 0;
-        botDisplay.textContent = value;
+        op = 'ERROR';
+    }
+    topDisplay.textContent = operand + ' ' + op;
+}
+
+function displayAddDigit(newDigit){
+    operand2 = operand2*10 + newDigit;
+    displayRefresh();
+}
+function displayRemoveDigit(){
+    if (botDisplay.textContent.length > 1 && operand2 > 1) {
+        operand2 = Math.floor(operand2/10);
+        displayRefresh();
+    } else {
+        operand2 = 0;
+        displayRefresh();
     } 
+}
+function displayRefresh() {
+    botDisplay.textContent = operand2;
 }
 
 function add(x, y) {
@@ -98,15 +128,34 @@ function divide(x, y) {
 }
 
 function operate(x, y, op) {
+    let answer;
     if (op == 'add') {
-        return add(x, y);
+        answer = add(x, y);
     } else if (op == 'subtract') {
-        return subtract(x, y);
+        answer = subtract(x, y);
     } else if (op == 'multiply') {
-        return multiply(x, y);
+        answer = multiply(x, y);
     } else if (op == 'divide') {
-        return divide(x, y);
+        answer = divide(x, y);
     } else {
-        return 'ERROR';
+        answer = 'ERROR';
     }
+    if (typeof answer == 'number') {
+        return answer;
+    } else {
+        return 0;
+    }
+}
+
+function operatorSelected(newOperator) {
+    if (operationUnderway) {
+        operand2 = operate(operand1, operand2, operator);
+
+    }
+    operationUnderway = true;
+    operator = newOperator;
+    operand1 = operand2;
+    operand2 = 0;
+    displayRefresh();
+    setTopDisplay(operand1, operator);
 }
