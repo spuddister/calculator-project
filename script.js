@@ -4,15 +4,20 @@ let operator;
 let decimalBoolean = false;
 let operationUnderway = false;
 
+//add negative 0 possibility
+//limit number size
+
 //DISPLAYS
 const topDisplay = document.getElementById('output');
 const botDisplay = document.getElementById('input');
 
 
 //OPERATOR BUTTONS
+//EQUALS
 const equalsBtn = document.getElementById('equals').addEventListener('click', function() {
+    operationUnderway = false
     operand2 = operate(operand1, operand2, operator);
-    displayRefresh();
+    refreshBotDisplay();
     topDisplay.textContent = '';
     operator = '';
     operand1 = null;
@@ -37,9 +42,27 @@ const divideBtn = document.getElementById('divide').addEventListener('click', fu
     operatorSelected('divide');
 })
 
+//FUNCTION BUTTONS
 //BACKSPACE
 const backBtn = document.getElementById('backspace').addEventListener('click', function(){
     displayRemoveDigit();
+})
+
+//PLUS-MINUS
+const plusMinusBtn = document.getElementById('plus-minus').addEventListener('click', function(){
+    operand2 *=-1;
+    refreshBotDisplay();
+})
+
+//CLEAR
+const clearBtn = document.getElementById('clear').addEventListener('click', function(){
+    operand1 = null;
+    operand2 = 0;
+    operator = '';
+    decimalBoolean = false;
+    operationUnderway = false;
+    topDisplay.textContent = '';
+    refreshBotDisplay();
 })
 
 //NUMBER BUTTONS
@@ -74,7 +97,7 @@ const nine = document.getElementById('nine').addEventListener('click', function(
     displayAddDigit(9);
 })
 const decimal = document.getElementById('dec-button').addEventListener('click', function(){
-    console.log('decimal');
+    decimalBoolean? decimalBoolean = false: decimalBoolean = true;
 })
 
 //FUNCTIONS
@@ -95,19 +118,30 @@ function setTopDisplay(operand, operator){
 }
 
 function displayAddDigit(newDigit){
-    operand2 = operand2*10 + newDigit;
-    displayRefresh();
+    if (operand2 < 0) {
+        operand2 = -(-operand2*10 + newDigit);
+    } else {
+        operand2 = operand2*10 + newDigit;
+    }
+
+    refreshBotDisplay();
 }
 function displayRemoveDigit(){
-    if (botDisplay.textContent.length > 1 && operand2 > 1) {
-        operand2 = Math.floor(operand2/10);
-        displayRefresh();
+    if (botDisplay.textContent.length > 1 && (operand2 > 1 || operand2 < -1)) {
+        if (operand2 < 0) {
+            console.log('oops2222');
+            operand2 = -1*Math.floor((-operand2)/10);
+        } else {
+            operand2 = Math.floor(operand2/10);
+            console.log('oops');
+        }
+        refreshBotDisplay();
     } else {
         operand2 = 0;
-        displayRefresh();
+        refreshBotDisplay();
     } 
 }
-function displayRefresh() {
+function refreshBotDisplay() {
     botDisplay.textContent = operand2;
 }
 
@@ -156,6 +190,6 @@ function operatorSelected(newOperator) {
     operator = newOperator;
     operand1 = operand2;
     operand2 = 0;
-    displayRefresh();
+    refreshBotDisplay();
     setTopDisplay(operand1, operator);
 }
