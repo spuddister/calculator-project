@@ -48,9 +48,10 @@ body {
 }
 
 #input, #output {
-    max-width: 330px;
-    max-height: 60px;
+    max-width: 320px;
+    /* height: 60px; */
     font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+    overflow-wrap: break-word;
 }
 
 #input {
