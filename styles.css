@@ -29,7 +29,7 @@ body {
     background-color: black;
     padding: 20px;
     border-radius: 35px;
-    box-shadow: 10px 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 black;
+    box-shadow: 10px 10px 16px 0 rgba(0,0,0,0.2),3px 5px 20px 0 black;
 }
 
 .display {
@@ -83,7 +83,6 @@ button {
     border: none;
     border-radius: 50%;
     padding: 0;
-    /* font-weight: 900; */
     font-size: 35px;
 }
 
@@ -91,18 +90,22 @@ button {
     background-color: #313131;
     color: white;
 }
-
 .num-button:hover {
     background-color: #242424;
+}
+.num-button:active {
+    background-color: #181818;
 }
 
 .op-button {
     background-color: #f69906;
     color: white;
 }
-
 .op-button:hover {
     background-color: #ce7f00;
+}
+.op-button:active {
+    background-color: #9e6100;
 }
 
 .func-button {
@@ -110,9 +113,11 @@ button {
     color: black;
     font-weight: 900;
 }
-
 .func-button:hover {
     background-color: #797979;
+}
+.func-button:active {
+    background-color: #575757;
 }
 
 .plus-minus {

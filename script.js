@@ -23,7 +23,7 @@ const equalsBtn = document.getElementById('equals').addEventListener('click', fu
     topDisplay.textContent = '';
     operator = '';
     operand1 = null;
-    // operand2 = 0;
+    op2Decimal = operand2%1;
 });
 //ADD
 const addBtn = document.getElementById('add').addEventListener('click', function(){
@@ -196,7 +196,7 @@ function multiply(x, y) {
 
 function divide(x, y) {
     if (y == 0) {
-        alert("You know you can't do that!");
+        alert("Cannot divide by 0!");
         clear();
     }
     return x / y;
@@ -261,3 +261,81 @@ function clear() {
     topDisplay.textContent = '';
     refreshBotDisplay();
 }
+
+const keyboard = window.addEventListener("keydown", function (event) {
+    console.log(event.key);
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    }
+  
+    switch (event.key) {
+        case '0':
+            console.log('press')
+            displayAddDigit(0);
+            break;
+        case '1':
+            displayAddDigit(1);
+            break;
+        case '2':
+            displayAddDigit(2);
+            break;
+        case '3':
+            displayAddDigit(3);
+            break;
+        case '4':
+            displayAddDigit(4);
+            break;
+        case '5':
+            displayAddDigit(5);
+            break;
+        case '6':
+            displayAddDigit(6);
+            break;
+        case '7':
+            displayAddDigit(7);
+            break;
+        case '8':
+            displayAddDigit(8);
+            break;
+        case '9':
+            displayAddDigit(9);
+            break;
+        case '.':
+            toggleDecimal();
+            break;
+        case 'Backspace':
+            displayRemoveDigit();
+            break;
+        case 'Enter':
+            operationUnderway = false
+            decimalBoolean = false;
+            operand2 = operate(operand1, operand2, operator);
+            refreshBotDisplay();
+            topDisplay.textContent = '';
+            operator = '';
+            operand1 = null;
+            op2Decimal = operand2%1;
+            break;
+        case 'Delete':
+            clear();
+            break;
+        case "/":
+            operatorSelected('divide');
+            break;
+        case '+':
+            operatorSelected('add');
+            break;
+        case "-":
+            operatorSelected('subtract');
+            break;
+        case '*':
+            operatorSelected('multiply');
+            break;
+        
+        default:
+            return; // Quit when this doesn't handle the key event.
+    }
+  
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+  }, true);
