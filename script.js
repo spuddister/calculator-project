@@ -175,6 +175,7 @@ function displayRemoveDigit(){
 }
 function refreshBotDisplay() {
     if (operand2.toString().length > 11) {
+        operand2 = operand2*1;
         botDisplay.textContent = operand2.toExponential(6);
     } else {
         botDisplay.textContent = operand2;

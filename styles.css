@@ -29,6 +29,7 @@ body {
     background-color: black;
     padding: 20px;
     border-radius: 35px;
+    box-shadow: 10px 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 black;
 }
 
 .display {
@@ -37,35 +38,29 @@ body {
     border: grey 1px solid;
     justify-content: center;
     align-items: flex-end;
-    height: 130px;
     width: 330px;
     box-sizing: border-box;
-    padding: 5px;
     border-radius: 10px;
     margin-bottom: 15px;
     background-color: rgb(228, 226, 226);
-    position: relative;
 }
 
 #input, #output {
-    max-width: 320px;
+    max-width: 310px;
     /* height: 60px; */
     font-family: 'ZCOOL QingKe HuangYou', sans-serif;
-    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 5px;
 }
 
 #input {
-    position: absolute;
-    right: 10px;
-    bottom: 5px;
     font-size: 50px;
 }
 
 #output {
-    position: absolute;
-    right: 10px;
-    bottom: 65px;
     font-size: 40px;
+    min-height: 48px;
 }
 
 p{
@@ -97,15 +92,27 @@ button {
     color: white;
 }
 
+.num-button:hover {
+    background-color: #242424;
+}
+
 .op-button {
     background-color: #f69906;
     color: white;
+}
+
+.op-button:hover {
+    background-color: #ce7f00;
 }
 
 .func-button {
     background-color: #9f9f9f;
     color: black;
     font-weight: 900;
+}
+
+.func-button:hover {
+    background-color: #797979;
 }
 
 .plus-minus {
