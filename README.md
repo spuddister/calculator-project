@@ -9,4 +9,4 @@ For this project from [The Odin Project](https://www.theodinproject.com/) Curric
 - Being able to use some powerful array functions
  
 
-[See deployment here.](https://spuddister.github.io/etch-a-sketch-project/)
+[See deployment here.](https://spuddister.github.io/calculator-project/)
