@@ -1,6 +1,6 @@
 # Calculator Project
 
-For this project from [The Odin Project](https://www.theodinproject.com/) Curriculum I built a replica of the iPhone calculator.
+For this project from [The Odin Project](https://www.theodinproject.com/) Curriculum I built a replica of the iOS calculator.
 
 ### New Skills
 - Creating objects
